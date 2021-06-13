@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace PhpBenchmark;
 
-
 final class PhpBenchmark{
   public static function run($callback){
     try{
