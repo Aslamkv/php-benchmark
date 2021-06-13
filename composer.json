@@ -1,0 +1,30 @@
+{
+  "name": "aslamkv/php-benchmark",
+  "description": "Lightweight PHP library to measure memory usage and time taken for script execution",
+  "type": "library",
+  "keywords": [
+    "lightweight",
+    "php",
+    "library",
+    "memory",
+    "usage",
+    "time",
+    "taken",
+    "script",
+    "execution"
+  ],
+  "license": "MIT",
+  "authors": [{
+    "name": "Aslam",
+    "email": "kv.aslam@gmail.com",
+    "role": "maintainer"
+  }],
+  "require": {
+    "php": ">=7.2.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "PhpBenchmark\\": "src/"
+    }
+  }
+}
