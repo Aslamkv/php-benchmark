@@ -1,6 +1,12 @@
 # PhpBenchmark
 Lightweight PHP library to measure memory usage and time taken for script execution
 
+## Installation
+
+```
+composer require aslamkv/php-benchmark
+```
+
 ## Usage
 
 ```php
