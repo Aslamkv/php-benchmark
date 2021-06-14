@@ -10,7 +10,7 @@ composer require aslamkv/php-benchmark
 ## Usage
 
 ```php
-echo PhpBenchmark\PhpBenchmark::run(function(){
+PhpBenchmark\PhpBenchmark::run(function(){
   $a=[];
   $size=1000;
   for($i=0;$i<$size;$i++){
@@ -21,5 +21,4 @@ echo PhpBenchmark\PhpBenchmark::run(function(){
 
 > Output
 
-![image](https://user-images.githubusercontent.com/12555115/121805323-736b2980-cc68-11eb-9aef-7c33e4582c6c.png)
-
+![image](https://user-images.githubusercontent.com/12555115/121841523-191ba880-ccfc-11eb-9561-905ecd87acac.png)
