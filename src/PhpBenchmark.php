@@ -9,15 +9,18 @@ final class PhpBenchmark{
     try{
       $memory_before=memory_get_usage();
       $start_time=microtime(true);
+      ob_start();
       $callback();
+      ob_end_clean();
       $used_memory=(memory_get_peak_usage()-$memory_before);
       $time_taken=microtime(true)-$start_time;
       $used_memory_in_readable_format=self::get_bytes_in_readable_format($used_memory);
       $time_taken_in_readable_format=self::get_seconds_in_readable_format($time_taken);
-      return self::get_benchmark_message(
+      $benchmark_message=self::get_benchmark_output(
         $used_memory_in_readable_format,
         $time_taken_in_readable_format
       );
+      self::print_output($benchmark_message);
     }catch(Throwable $t){
       throw $t;
     }
@@ -56,15 +59,22 @@ final class PhpBenchmark{
     }
   }
 
-  private static function get_benchmark_message($used_memory,$time_taken){
+  private static function get_benchmark_output($used_memory,$time_taken){
     try{
-      $current_datetime=date('Y-m-d H:i:s');
-      $message="<pre>";
-      $message.="\nRunning benchmark at $current_datetime\n";
-      $message.="\nUsed memory: $used_memory";
-      $message.="\nTime taken: $time_taken";
-      $message.="</pre>";
-      return $message;
+      return [
+        'datetime'=>date('Y-m-d H:i:s'),
+        'used_memory'=>$used_memory,
+        'time_taken'=>$time_taken
+      ];
+    }catch(Throwable $t){
+      throw $t;
+    }
+  }
+
+  private static function print_output($benchmark_message){
+    try{
+      header('Content-Type: application/vnd.api+json');
+      echo json_encode($benchmark_message);
     }catch(Throwable $t){
       throw $t;
     }
